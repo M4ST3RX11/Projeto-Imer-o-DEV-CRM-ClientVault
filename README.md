@@ -1,4 +1,4 @@
-OBS: EU CRIE UM ARQUIVO DATA.JS POIS O SERVIDOR NÃ OVAIS CARREGAR MEUS DADOS NO GIT HUB. (FOI UM ALTERNATIVA PARA OS DADOS APARECEREM NO SITE FINAL, E O DATA.JSON PERMANECERA NO CODIGO CASO QUEIRA OLHAR).
+OBS: EU CRIE UM ARQUIVO DATA.JS POIS O SERVIDOR NÃO IRIA CARREGAR MEUS DADOS DO DATA.JSON PELO GIT HUB. (FOI UM ALTERNATIVA PARA OS DADOS APARECEREM NO SITE FINAL, E O DATA.JSON PERMANECERA NO CODIGO CASO QUEIRAM OLHAR).
 
 O ClientVault CRM é uma sofisticada aplicação web de Gerenciamento de Relacionamento com o Cliente, projetada para oferecer uma plataforma centralizada, intuitiva e visualmente moderna. O projeto se destaca por sua interface com efeito de Glassmorphism (vidro fosco), que cria uma sensação de profundidade e elegância. Esse design é alcançado através do uso estratégico de propriedades CSS, como backdrop-filter: blur() para desfocar o fundo, cores de fundo semitransparentes com rgba(), e bordas sutis que dão a impressão de que os elementos flutuam sobre a interface.
 
