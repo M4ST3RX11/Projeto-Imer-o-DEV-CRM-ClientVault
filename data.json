@@ -1,0 +1,140 @@
+{
+    "clients": [
+        {
+            "nome": "Cabra Josa",
+            "assunto": "Prospectar tubos especiais para alta temperatura",
+            "numero": "79 0000 0001",
+            "e-mail": "cabrajosa123@gmail.com",
+            "Empresa": "Cabra Company LTDA",
+            "Cargo": "Gerente de Compras",
+            "observacoes": "",
+            "dataAgendada": "2025-11-23T12:00:00.000Z",
+            "prioridade": "Alta",
+            "id": "client_0"
+        },
+        {
+            "nome": "Cabra da Peste",
+            "assunto": "Confimar pedido da cafetera3000 da china",
+            "numero": "79 0000 0002",
+            "e-mail": "cabradapeste_134@gmail.com",
+            "Empresa": "Cabra Concorrente Company LTDA",
+            "Cargo": "Gerente de café",
+            "observacoes": "",
+            "dataAgendada": "2025-11-24T12:00:00.000Z",
+            "prioridade": "Alta",
+            "id": "client_1"
+        },
+        {
+            "nome": "Astrogildo das Galaxias",
+            "assunto": "Encomenda da poltrona celestial 2.0 para office",
+            "numero": "79 0000 0003",
+            "e-mail": "Astrogildo.Masterofuniverse@gmail.com",
+            "Empresa": "Esportação e Importação Galatico LTDA",
+            "Cargo": "Gerente de Logistica",
+            "observacoes": "",
+            "dataAgendada": "2025-11-22T12:00:00.000Z",
+            "prioridade": "Média",
+            "id": "client_2"
+        },
+        {
+            "nome": "José Picada",
+            "assunto": "Confimar pedido de antidoto contra SBP",
+            "numero": "79 0000 0004",
+            "e-mail": "zepicada@gmail.com",
+            "Empresa": "Picada Antídotos LTDA",
+            "Cargo": "Gerente de Segurança",
+            "observacoes": "",
+            "dataAgendada": "2025-11-18T12:00:00.000Z",
+            "prioridade": "Baixa",
+            "id": "client_3"
+        },
+        {
+            "nome": "Jubileu Adamastor",
+            "assunto": "Pedido de parafusos sextavados",
+            "numero": "79 0000 0005",
+            "e-mail": "jubileu.adamastor@email.com",
+            "Empresa": "Adamastor Parafusos & Cia",
+            "Cargo": "Chefe de Logística",
+            "observacoes": "",
+            "dataAgendada": "2025-11-30T03:00:00.000Z",
+            "prioridade": "Média",
+            "id": "client_4"
+        },
+        {
+            "nome": "D'alva Alvarenta",
+            "assunto": "Prospectar novas máquinas de solda",
+            "numero": "79 0000 0006",
+            "e-mail": "alvarenga.soldas@email.com",
+            "Empresa": "Soldas Alvarenga S.A.",
+            "Cargo": "Gerente de Compras",
+            "observacoes": "",
+            "dataAgendada": null,
+            "prioridade": "Baixa",
+            "id": "client_5"
+        },
+        {
+            "nome": "Astolfo Pederneiras",
+            "assunto": "Confirmar pedido de 1000 resmas de papel",
+            "numero": "79 0000 0007",
+            "e-mail": "astolfo.ped@email.com",
+            "Empresa": "Pederneiras Papelaria",
+            "Cargo": "Comprador",
+            "observacoes": "",
+            "dataAgendada": null,
+            "prioridade": "Média",
+            "id": "client_6",
+            "dataCadastro": ""
+        },
+        {
+            "nome": "Creison Valdisnei",
+            "assunto": "Orçamento para manutenção de empilhadeiras",
+            "numero": "79 0000 0008",
+            "e-mail": "creison.val@email.com",
+            "Empresa": "Valdisnei Reparos Industriais",
+            "Cargo": "Supervisor de Manutenção",
+            "observacoes": "",
+            "dataAgendada": null,
+            "prioridade": "Alta",
+            "id": "client_7"
+        },
+        {
+            "nome": "Lindo Subtil",
+            "assunto": "Prospectar fornecedores de Equipamentos de Proteção Individual (EPIs)",
+            "numero": "79 0000 0009",
+            "e-mail": "lindo_subtil@email.com",
+            "Empresa": "Subtil Equipamentos de Segurança",
+            "Cargo": "Chefe de Segurança do Trabalho",
+            "observacoes": "",
+            "dataAgendada": null,
+            "prioridade": "Média",
+            "id": "client_8"
+        }
+    ],
+    "calendarNotes": [
+        {
+            "id": "_12345abc",
+            "date": "2025-12-25",
+            "text": "Reunião de Anual com o BOSS"
+        },
+        {
+            "id": "_67890def",
+            "date": "2025-12-01",
+            "text": "Preparar relatório mensal"
+        },
+        {
+            "id": "client_2_note",
+            "date": "2025-11-19",
+            "text": "Astrogildo das Galaxias: Encomenda da poltrona celestial 2.0 para office"
+        },
+        {
+            "id": "client_3_note",
+            "date": "2025-11-18",
+            "text": "José Picada: Confimar pedido de antidoto contra SBP"
+        },
+        {
+            "id": "client_4_note",
+            "date": "2025-11-30",
+            "text": "Jubileu Adamastor: Pedido de parafusos sextavados"
+        }
+    ]
+}
