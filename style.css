@@ -1,0 +1,1217 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'); /* Fonte moderna e profissional */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- THEME VARIABLES --- */
+:root { /* Dark Theme (Default) */
+    --primary-color: #00b4d8;   /* Ciano Brilhante */
+    --primary-hover-color: #0096c7; /* Ciano mais escuro para hover */
+    --secondary-color: #FFFFFF; /* Branco */
+    --tertiary-color: #0077b6;  /* Azul Médio como cor de destaque */
+    --card-bg-color: rgba(2, 48, 71, 0.9); /* Fundo de Cards/Modais com tom azul escuro */
+    --text-color: #FFFFFF; /* Branco */
+    --text-muted-color: #FFFFFF; /* Branco */
+    --danger-color: #ff5555;
+    --warning-color: #ffc700;
+    --success-color: #00d991;
+    --border-color: rgba(139, 148, 158, 0.2);
+    --shadow-color: rgba(0, 180, 216, 0.2); /* Sombra Ciano */
+    --input-bg-color: rgba(18, 18, 24, 0.7); /* Mantido escuro para legibilidade */
+    --logo-image: url('logo/CRM ClientVault.png'); /* Logo para tema escuro */
+    --body-background-image: url('logo/polygonal19black.png'); /* Fundo para tema escuro */
+    --body-background-color: #1a1a1a; /* Cor de fundo escura para fallback */
+}
+
+[data-theme="light"] {
+    --primary-color: #0077b6; /* Azul Médio para tema claro */
+    --primary-hover-color: #023e7d;
+    --secondary-color: #FFFFFF; /* Branco */
+    --tertiary-color: #0096c7; /* Ciano claro */
+    --card-bg-color: rgba(255, 255, 255, 0.85);
+    --text-color: #FFFFFF; /* Branco */
+    --text-muted-color: #FFFFFF; /* Branco */
+    --danger-color: #d90429;
+    --warning-color: #fca311;
+    --success-color: #008000;
+    --border-color: rgba(36, 41, 47, 0.2);
+    --shadow-color: rgba(0, 119, 182, 0.15); /* Sombra Azul */
+    --input-bg-color: rgba(255, 255, 255, 0.9);
+    --logo-image: url('logo/CRM ClientVault.png'); /* Logo para tema claro */
+    --body-background-image: url('logo/polygonal19.jpg'); /* Fundo para tema claro */
+    --logo-image: url('logo/CRM ClientVault.png'); /* Logo para tema claro */
+    --body-background-color: #f0f2f5; /* Cor de fundo clara para fallback */
+}
+
+/* --- BASE & LAYOUT --- */
+main {
+    max-width: 1200px;
+    width: 95%;
+    margin: 2rem auto;
+}
+
+/* --- HEADER --- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+header h1 {
+    font-family: inherit;
+    font-size: 2.5rem;
+    white-space: nowrap;
+    font-weight: 700;
+    color: var(--text-color); /* Cor do título definida para branco/preto dependendo do tema */
+    color: var(--secondary-color); /* Usa a cor secundária para o título */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade */
+}
+
+.logo-title-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Espaço entre o logo e o título */
+}
+
+.logo-container {
+    width: 60px; /* Largura do logo */
+    height: 60px; /* Altura do logo */
+    background-image: var(--logo-image); /* Usa a variável para o logo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer; /* Adicionado para indicar que é clicável */
+    transition: transform 0.3s ease; /* Adicionado para uma animação suave */
+}
+
+
+/* --- THEME TOGGLE --- */
+#theme-toggle-button {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+#theme-toggle-button:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: rotate(25deg) scale(1.1); /* Efeito de rotação e escala */
+}
+[data-theme="light"] .icon-sun { display: none; }
+[data-theme="light"] .icon-moon { display: block; }
+
+/* --- TABS --- */
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.tab-button {
+    padding: 0.75rem 1.25rem; 
+    border: none;
+    border-bottom: 3px solid transparent;
+    background-color: transparent;
+    background-color: transparent; 
+    color: var(--text-color); /* Alterado para branco */
+    cursor: pointer;
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    color: var(--primary-color);
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+    padding: 2rem 0; /* Espaçamento interno */
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* --- SUB-TABS (Aba Início) --- */
+.sub-tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.sub-tab-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: transparent;
+    color: var(--text-muted-color);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 6px 6px 0 0;
+    transition: all 0.3s ease;
+}
+
+.sub-tab-button:hover {
+    color: var(--primary-color);
+    background-color: rgba(139, 148, 158, 0.1);
+}
+
+.sub-tab-button.active {
+    color: var(--primary-color);
+    background-color: var(--card-bg-color);
+}
+
+.sub-tab-content {
+    display: none;
+    animation: fadeIn 0.4s;
+}
+
+.sub-tab-content.active {
+    display: block;
+}
+
+/* --- APPOINTMENT MINI CARDS (Aba Início) --- */
+.appointment-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Layout responsivo em grid */
+    gap: 1rem;
+}
+
+.appointment-mini-card {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.appointment-mini-card:hover {
+    transform: translateY(-3px) scale(1.01); /* Efeito de levantar e escalar */
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.appointment-mini-card .card-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.appointment-mini-card .card-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.appointment-mini-card .card-name {
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.appointment-mini-card .card-assunto {
+    font-size: 0.9rem;
+    color: var(--text-muted-color);
+}
+
+.appointment-mini-card .card-date {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+}
+
+.appointment-mini-card.today .card-date { color: var(--primary-color); }
+.appointment-mini-card.past-due .card-date { color: var(--danger-color); }
+.appointment-mini-card.future .card-date { color: var(--warning-color); }
+
+/* --- CARDS --- */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+article.client-card {
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+    perspective: 1000px; /* Adiciona perspectiva 3D para o efeito de flip */
+}
+
+article.client-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+/* --- SOLUÇÃO PARA CLIQUE NO CARD --- */
+/*
+  Esta regra garante que o clique no card funcione para abrir o modal.
+  Ela desativa eventos de clique em todos os elementos filhos para que o card principal receba o clique.
+*/
+.client-card *,
+.appointment-mini-card * {
+    pointer-events: none;
+}
+
+/*
+  ...e depois reativa os eventos apenas nos elementos que precisam ser clicáveis,
+  como links, botões e o novo container de data.
+*/
+.client-card a, .client-card button, .client-card select,
+.appointment-mini-card a, .appointment-mini-card button, .appointment-mini-card select,
+.client-card .card-date-container, .client-card .card-date-container * {
+    pointer-events: auto; /* Reativa eventos para botões, links e selects */
+}
+
+article.client-card h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+article.client-card p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    font-size: 0.9rem; /* Reduzido para caber melhor */
+    color: var(--text-muted-color);
+}
+
+article.client-card p strong {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.loading-text {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: var(--text-muted-color);
+}
+
+/* --- PAGINATION --- */
+#pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.pagination-info {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-muted-color);
+}
+
+/* --- CONTROLES (Busca, Filtros) --- */
+.controls-container {
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.search-container {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.search-container input {
+    width: 100%; /* Garante que o input ocupe todo o espaço */
+    border-radius: 8px; /* Arredonda todos os cantos */
+    padding-left: 15px;
+}
+
+/* Garante que o ícone e o botão de busca fiquem ocultos */
+.search-icon, #botao-busca {
+    display: none !important;
+}
+
+
+/* --- FORMS & INPUTS --- */
+.add-contact-form {
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 2rem auto;
+    border: 1px solid var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.85rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-bg-color);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--shadow-color), inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* --- BUTTONS --- */
+button, .button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: var(--text-color); /* Garante que todos os botões usem a cor de texto principal */
+    color: var(--text-color);
+    transition: all 0.2s ease; /* Transições mais rápidas para botões */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+button:hover {
+    transform: translateY(-2px); /* Efeito de levantar */
+    border-color: var(--border-color); /* Mantém a borda padrão no hover geral */
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Destructive Button */
+.button-danger {
+    background-color: var(--danger-color);
+    color: #fff;
+    border-color: var(--danger-color);
+}
+.button-danger:hover {
+    background-color: color-mix(in srgb, var(--danger-color) 80%, black); /* Escurece um pouco */
+    border-color: color-mix(in srgb, var(--danger-color) 80%, black);
+    color: #fff;
+}
+
+/* --- MODALS --- */
+.modal-overlay {
+    position: absolute; /* Alterado para absolute para rolar com a página */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    border: 1px solid var(--border-color);
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-muted-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+}
+
+.close-button:hover {
+    color: var(--primary-color);
+    transform: none;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* --- FOOTER --- */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: var(--text-muted-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer-credit {
+    font-size: 0.9rem;
+    color: var(--text-muted-color);
+}
+
+.card-footer {
+    margin-top: auto; /* Empurra o rodapé para o final do card */
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.contact-actions {
+    display: flex;
+    justify-content: flex-start; /* Alinha os botões à esquerda */
+    gap: 0.5rem; /* Espaço entre os botões */
+}
+
+.card-action-btn {
+    flex-grow: 1; /* Faz os botões ocuparem o espaço disponível */
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    border: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo sutil */
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none; /* Remove sublinhado de links */
+    color: var(--text-muted-color);
+    transition: all 0.2s ease;
+}
+
+.card-action-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* --- TOAST NOTIFICATIONS --- */
+#toast-notification-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    opacity: 0; /* Começa invisível */
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0); /* Desliza para cima */
+}
+
+.toast.success {
+    background-color: var(--success-color);
+}
+.toast.success::before {
+    content: '✅';
+}
+
+.toast.error {
+    background-color: var(--danger-color);
+}
+.toast.error::before {
+    content: '❌';
+}
+
+/* --- SPINNER --- */
+.spinner-overlay { /* Overlay para o spinner */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; /* Acima de modais */
+}
+.spinner { /* O spinner em si */
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- UTILITIES & ANIMATIONS --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-focus {
+    0% {
+        box-shadow: 0 0 0 0px var(--shadow-color);
+    }
+    100% {
+        /* O efeito de pulsação se expande e desaparece */
+        box-shadow: 0 0 0 8px transparent;
+    }
+}
+
+@keyframes day-click-animation {
+    0% { transform: scale(1); background-color: transparent; }
+    50% { transform: scale(1.2); background-color: var(--primary-hover-color); }
+    100% { transform: scale(1); background-color: transparent; }
+}
+
+@keyframes meeting-appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body.modal-open {
+    /* overflow: hidden; - Removido para permitir a rolagem da página com o modal aberto */
+}
+
+@keyframes pulse-danger {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--danger-color) 70%, transparent); }
+    70% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--danger-color) 0%, transparent); } /* Pulsa para fora */
+    100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--danger-color) 0%, transparent); }
+}
+/* Scrollbar */
+html {
+    scrollbar-width: thin; /* "auto" ou "thin" */
+    scrollbar-color: var(--primary-color) transparent;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-hover-color);
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+    header h1 {
+        font-size: 1.8rem;
+    }
+    .tabs {
+        overflow-x: auto;
+    }
+    main {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .modal-content {
+        padding: 1.5rem;
+    }
+    .modal-content h2 {
+        font-size: 1.5rem;
+    }
+    .footer {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* --- WHITEBOARD CALENDAR (Aba Calendário) --- */
+.calendar-whiteboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+}
+
+#current-month-year {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+#whiteboard-calendar-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px; /* Espaçamento fino entre os dias */
+    border: 1px solid var(--border-color);
+    border-radius: 0 0 8px 8px;
+    overflow: hidden; /* Garante que os cantos arredondados funcionem */
+}
+
+.calendar-day-whiteboard {
+    min-height: 120px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: background-color 0.2s;
+}
+
+.calendar-day-whiteboard.other-month {
+    opacity: 0.5;
+}
+
+.day-header {
+    font-weight: 600;
+    text-align: center;
+    padding: 0.75rem 0;
+    min-height: auto;
+    color: var(--primary-color);
+}
+
+.day-number {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-muted-color);
+    margin-bottom: 4px;
+}
+
+/* Estilo para a "caixa" do agendamento do cliente no calendário */
+.calendar-meeting-item {
+    background-color: var(--primary-color);
+    color: #ffffff; /* Garante que o texto seja branco e legível */
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adiciona "..." se o nome for muito longo */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    margin-top: 2px; /* Adiciona um pequeno espaço acima de cada item */
+}
+
+.meeting-item-animated {
+    animation: meeting-appear 0.5s ease-out forwards;
+    /* Começa invisível para a animação funcionar corretamente */
+    opacity: 0;
+}
+
+.post-it-note {
+    background-color: var(--warning-color);
+    color: #000;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.post-it-note:hover {
+    transform: scale(1.05);
+}
+
+/* === ESTILOS MESCLADOS DO DESIGN.CSS === */
+
+/*
+  1. FUNDO E FONTE GERAL
+  NOTA: As regras de 'background' e 'backdrop-filter' foram removidas do 'body'
+  pois o 'body' é o container principal e não pode ter um "fundo" para desfocar.
+  A imagem de fundo e a cor já são controladas pelas variáveis de tema.
+*/
+body {
+    /* Define a imagem e a cor de fundo de uma vez para evitar sobrescritas */
+    background: var(--body-background-color) var(--body-background-image) no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-color); /* Cor de texto consolidada */
+}
+
+/* 3. APLICAÇÃO DO EFEITO NOS ELEMENTOS */
+
+/* Cabeçalho */
+header {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* position: sticky; - Esta propriedade já está definida anteriormente */
+    top: 0;
+    z-index: 1000;
+}
+
+/* Conteúdo das Abas */
+.tab-content.active,
+.controls-container,
+.add-contact-form,
+.footer {
+    padding: 2rem;
+    margin-top: 1.5rem;
+    animation: fadeIn 0.5s ease-in-out;
+    /* Efeito de vidro para todos os containers principais */
+    background-color: rgba(0, 119, 182, 0.15); /* Alterado para background-color */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Efeito de vidro para os mini-cards e calendário */
+.appointment-mini-card,
+.calendar-whiteboard-header,
+.calendar-day-whiteboard {
+    background-color: rgba(0, 119, 182, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.calendar-day-whiteboard.other-month { /* Estilo para dias de outro mês no calendário */
+    background-color: rgba(2, 62, 125, 0.4); /* Alterado para background-color */
+}
+
+/* Cards de Cliente */
+.client-card {
+    background-color: rgba(0, 119, 182, 0.2); /* Alterado para background-color */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #e0e0e0;
+    perspective: 1000px; /* Adiciona perspectiva para o efeito de flip */
+    cursor: pointer; /* Indica que o card inteiro é clicável */
+}
+
+.client-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    border-color: var(--tertiary-color); /* Destaque com a cor ciano */
+}
+
+.client-card h2 {
+    color: #ffffff;
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 8px;
+}
+
+.client-card p {
+    color: #c7c7c7;
+}
+
+.client-card .email-link {
+    color: var(--text-color); /* Garante que a cor do link seja branca */
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.client-card .email-link:hover {
+    color: #b3d1ff;
+    text-decoration: underline;
+}
+
+/* Cor do link de e-mail dentro do modal */
+.modal-content .email-link {
+    color: var(--text-color); /* Garante que a cor do link seja branca */
+    text-decoration: none;
+}
+.client-card .email-link:hover {
+    color: #b3d1ff;
+    text-decoration: underline;
+}
+
+/* Modais */
+.modal-content, .note-modal-content { /* Corrigido seletor de '.modal' para '.modal-content' */
+    background-color: rgba(2, 48, 71, 0.75); /* Alterado para background-color */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    color: #f0f0f0;
+}
+
+.modal-overlay.active, #note-modal.active {
+    background-color: rgba(0, 0, 0, 0.6); /* Alterado para background-color */
+}
+
+/* 4. BOTÕES E CONTROLES */
+
+/* Botões de Abas */
+.tab-button {
+    background: transparent;
+    border: 2px solid transparent;
+    color: var(--text-color); /* Garante que a cor do texto seja branca */
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.tab-button.active {
+    background: var(--primary-color);
+    color: #ffffff;
+    font-weight: bold;
+    border-color: transparent;
+}
+
+/* Botões Primários */
+.button-primary, .button-danger {
+    background: linear-gradient(45deg, var(--primary-color), var(--tertiary-color)); /* Gradiente Ciano para Azul */
+    border: none;
+    color: white;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.button-primary:hover, .button-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+/* Botões Secundários e de Filtro */
+.button-secondary, .filter-btn, .pagination-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button-secondary:hover, .filter-btn:hover, .pagination-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-hover-color);
+}
+
+/* Campos de Formulário (Inputs e Selects) */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"], /* Adicionado para estilizar o campo de data */
+textarea,
+select { /* Estilo unificado para selects com efeito de vidro */
+    background: rgba(0, 0, 0, 0.3) !important; /* Fundo escuro e translúcido */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #f0f0f0 !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    transition: border-color 0.3s, box-shadow 0.3s !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus, /* Adicionado para o efeito de foco */
+textarea:focus,
+select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--shadow-color);
+    outline: none;
+}
+
+/* Cor do placeholder para branco */
+::placeholder {
+    color: #ffffff !important;
+    opacity: 0.8; /* Ajusta a opacidade para não ficar muito forte */
+}
+
+/* 5. MELHORIAS ADICIONAIS */
+
+/* Scrollbar Estilizada */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--primary-color), var(--tertiary-color)); /* Gradiente na barra de rolagem */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(var(--tertiary-color), var(--primary-color));
+}
+
+/* Destaque para cliente recém-adicionado */
+@keyframes highlight-new { /* CORRIGIDO: Bloco de animação estava quebrado */
+    from {
+        box-shadow: 0 0 25px rgba(90, 139, 255, 0.8);
+        transform: scale(1.02);
+    }
+    to {
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        transform: scale(1);
+    }
+}
+
+.new-client-highlight {
+    animation: highlight-new 1.5s ease-out;
+}
+
+/* --- SCHEDULE MODAL (Janela de Agendamento) --- */
+
+/* Estilo específico para o conteúdo do modal de agendamento */
+#schedule-modal .modal-content {
+    max-width: 450px; /* Um pouco mais estreito para um formulário focado */
+}
+
+/* Título do modal de agendamento */
+#schedule-modal h2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Ícone de calendário no título */
+#schedule-modal h2::before {
+    content: '📅'; /* Ícone de calendário */
+    font-size: 2rem;
+    opacity: 0.8;
+}
+
+/* Formulário dentro do modal */
+.schedule-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Espaçamento entre os grupos de formulário */
+}
+
+/* Estilo para o campo de data, para garantir boa visibilidade do ícone do calendário */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.8) brightness(1.2); /* Deixa o ícone mais visível em temas escuros */
+    transition: filter 0.3s;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    filter: invert(1) brightness(1); /* Aumenta o brilho no hover */
+}
+
+/* Aplica a animação de pulsação ao focar nos campos de data e hora */
+#schedule-modal input:focus {
+    animation: pulse-focus 0.7s ease-out;
+    border-color: transparent; /* Remove a borda padrão no foco para não interferir na animação */
+    box-shadow: none; /* Remove a sombra padrão para a animação assumir */
+}
+
+/* --- INLINE CALENDAR (Dentro do Modal de Agendamento) --- */
+
+.inline-calendar {
+    background-color: rgba(0,0,0,0.15);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+}
+
+.calendar-nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+.calendar-nav-btn:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--primary-color);
+}
+
+#calendar-month-year {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.weekday {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--text-muted-color);
+    padding-bottom: 0.5rem;
+}
+
+.calendar-day {
+    padding: 0.5rem 0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    border: 1px solid transparent;
+}
+
+.calendar-day:not(.other-month):hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.calendar-day.selected {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
+    animation: day-click-animation 0.4s ease-in-out;
+}
+
+.calendar-day.other-month {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
